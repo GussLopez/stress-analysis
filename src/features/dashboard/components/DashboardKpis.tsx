@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query"
 import { Angry, Frown, Spotlight } from "lucide-react";
 import { FaRegFaceGrimace } from "react-icons/fa6";
 import { IoShareSocial } from "react-icons/io5";
+import { motion } from 'motion/react'
 
 interface KpisData {
   avg_anger: number;
@@ -36,7 +37,12 @@ export default function DashboardKpis() {
 
   return (
     <div className="grid grid-cols-5 gap-5 pt-4">
-      <div className="p-4 rounded-md shadow-xs border border-muted group">
+      <motion.div
+        initial={{ opacity: 0, y: -6, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ ease: 'easeIn', duration: .3 }}
+        className="p-4 rounded-md shadow-xs border border-muted group"
+      >
         <div className="flex items-center gap-2">
           <div className="bg-neutral-100 p-1 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors">
             <Spotlight className="size-5.5" />
@@ -46,8 +52,12 @@ export default function DashboardKpis() {
 
         {isLoading ? <Skeleton className="w-22 h-4 mt-6" />
           : <p className="mt-3 text-2xl font-medium">{data?.stress_percentage} %</p>}
-      </div>
-      <div className="p-4 rounded-md shadow-xs border border-muted group">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: -6, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ ease: 'easeIn', duration: .3, delay: .1 }}
+        className="p-4 rounded-md shadow-xs border border-muted group">
         <div className="flex items-center gap-2">
           <div className="bg-neutral-100 p-1 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors">
             <Angry className="size-5.5" />
@@ -61,8 +71,13 @@ export default function DashboardKpis() {
             {data?.avg_anger} <span className="text-xs font-normal text-muted-foreground">prom.</span>
           </p>
         }
-      </div>
-      <div className="p-4 rounded-md shadow-xs border border-muted group">
+      </motion.div>
+      <motion.div
+        className="p-4 rounded-md shadow-xs border border-muted group"
+        initial={{ opacity: 0, y: -6, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ ease: 'easeIn', duration: .3, delay: .2 }}
+      >
         <div className="flex items-center gap-2">
           <div className="bg-neutral-100 p-1 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors">
             <FaRegFaceGrimace className="size-5.5" />
@@ -76,8 +91,13 @@ export default function DashboardKpis() {
             {data?.avg_anxiety} <span className="text-xs font-normal text-muted-foreground">prom.</span>
           </p>
         }
-      </div>
-      <div className="p-4 rounded-md shadow-xs border border-muted group">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: -6, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ ease: 'easeIn', duration: .3, delay: .3 }}
+        className="p-4 rounded-md shadow-xs border border-muted group"
+      >
         <div className="flex items-center gap-2">
           <div className="bg-neutral-100 p-1 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors">
             <Frown className="size-5.5" />
@@ -90,8 +110,13 @@ export default function DashboardKpis() {
             {data?.avg_sadness} <span className="text-xs font-normal text-muted-foreground">prom.</span>
           </p>
         }
-      </div>
-      <div className="p-4 rounded-md shadow-xs border border-muted group">
+      </motion.div>
+      <motion.div
+        className="p-4 rounded-md shadow-xs border border-muted group"
+        initial={{ opacity: 0, y: -6, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ ease: 'easeIn', duration: .3, delay: .4 }}
+      >
         <div className="flex items-center gap-2">
           <div className="bg-neutral-100 p-1 rounded-md group-hover:bg-primary/10 group-hover:text-primary transition-colors">
             <IoShareSocial className="size-5.5" />
@@ -104,7 +129,7 @@ export default function DashboardKpis() {
             {data?.total_posts} <span className="text-xs font-normal text-muted-foreground">posts</span>
           </p>
         }
-      </div>
+      </motion.div>
     </div>
   )
 }
