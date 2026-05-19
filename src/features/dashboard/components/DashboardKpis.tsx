@@ -1,5 +1,6 @@
 'use client'
 
+import { Skeleton } from "@/src/shared/components/ui/skeleton";
 import { useQuery } from "@tanstack/react-query"
 import { Angry, Frown, Spotlight } from "lucide-react";
 import { FaRegFaceGrimace } from "react-icons/fa6";
@@ -43,7 +44,8 @@ export default function DashboardKpis() {
           <span>Procentaje de Estrés</span>
         </div>
 
-        <p className="mt-3 text-2xl font-medium">{data?.stress_percentage} %</p>
+        {isLoading ? <Skeleton className="w-22 h-4 mt-6" />
+          : <p className="mt-3 text-2xl font-medium">{data?.stress_percentage} %</p>}
       </div>
       <div className="p-4 rounded-md shadow-xs border border-muted group">
         <div className="flex items-center gap-2">
@@ -53,9 +55,12 @@ export default function DashboardKpis() {
           <span>Promedio de Ira</span>
         </div>
 
-        <p className="mt-3 text-2xl font-medium">
-          {data?.avg_anger} <span className="text-xs font-normal text-muted-foreground">prom.</span>
-        </p>
+        {isLoading
+          ? <Skeleton className="w-22 h-4 mt-6" />
+          : <p className="mt-3 text-2xl font-medium">
+            {data?.avg_anger} <span className="text-xs font-normal text-muted-foreground">prom.</span>
+          </p>
+        }
       </div>
       <div className="p-4 rounded-md shadow-xs border border-muted group">
         <div className="flex items-center gap-2">
@@ -65,9 +70,12 @@ export default function DashboardKpis() {
           <span>Promedio de Ansiedad</span>
         </div>
 
-        <p className="mt-3 text-2xl font-medium">
-          {data?.avg_anxiety} <span className="text-xs font-normal text-muted-foreground">prom.</span>
-        </p>
+        {isLoading
+          ? <Skeleton className="w-22 h-4 mt-6" />
+          : <p className="mt-3 text-2xl font-medium">
+            {data?.avg_anxiety} <span className="text-xs font-normal text-muted-foreground">prom.</span>
+          </p>
+        }
       </div>
       <div className="p-4 rounded-md shadow-xs border border-muted group">
         <div className="flex items-center gap-2">
@@ -76,9 +84,12 @@ export default function DashboardKpis() {
           </div>
           <span>Promedio de Tristesa</span>
         </div>
-        <p className="mt-3 text-2xl font-medium">
-          {data?.avg_sadness} <span className="text-xs font-normal text-muted-foreground">prom.</span>
-        </p>
+        {isLoading
+          ? <Skeleton className="w-22 h-4 mt-6" />
+          : <p className="mt-3 text-2xl font-medium">
+            {data?.avg_sadness} <span className="text-xs font-normal text-muted-foreground">prom.</span>
+          </p>
+        }
       </div>
       <div className="p-4 rounded-md shadow-xs border border-muted group">
         <div className="flex items-center gap-2">
@@ -87,11 +98,13 @@ export default function DashboardKpis() {
           </div>
           <span>Publicaciones totales</span>
         </div>
-        <p className="mt-3 text-2xl font-medium">
-          {data?.total_posts} <span className="text-xs font-normal text-muted-foreground">posts</span>
-        </p>
+        {isLoading
+          ? <Skeleton className="w-22 h-4 mt-6" />
+          : <p className="mt-3 text-2xl font-medium">
+            {data?.total_posts} <span className="text-xs font-normal text-muted-foreground">posts</span>
+          </p>
+        }
       </div>
-
     </div>
   )
 }
